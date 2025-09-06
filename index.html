@@ -5,219 +5,95 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Apology to My Love</title>
     <style>
+        :root {
+            --page-bg: #ffe6f8;
+            --container-bg: #ffffff;
+            --main-text-h1: #ff69b4;
+            --accent-border: #d3b3ff;
+            --button-bg: #ff69b4;
+            --button-hover: #ff85c1;
+            --hearts-color: #ffb6c1;
+        }
+
+        [data-theme="dark"] {
+            --page-bg: #2a000d;
+            --container-bg: #1e1e2f;
+            --main-text-h1: #ff69b4;
+            --accent-border: #4b0082;
+            --button-bg: #ff69b4;
+            --button-hover: #ff85c1;
+            --hearts-color: #ffb6c1;
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #ffe6f0;
+            background-color: var(--page-bg);
             color: #333;
             text-align: center;
             padding: 40px;
             animation: fadeIn 2s ease-in;
             position: relative;
             overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
-        h1, h2, h3 {
-            color: #d147a3;
-        }
-        p {
-            margin-bottom: 20px;
-        }
-        .closing {
-            margin-top: 40px;
-            font-weight: bold;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        @keyframes heartbeat {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-        @keyframes float {
-            0% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0); }
-        }
-        @keyframes sparkle {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 1; }
-        }
-        @keyframes confetti-fall {
-            0% { transform: translateY(0) rotate(0deg); }
-            100% { transform: translateY(100vh) rotate(360deg); }
-        }
+        h1, h2, h3 { color: var(--main-text-h1); }
+        p { margin-bottom: 20px; }
+        .closing { margin-top: 40px; font-weight: bold; }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes heartbeat { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+        @keyframes float { 0% { transform: translateY(0); } 50% { transform: translateY(-10px); } 100% { transform: translateY(0); } }
+        @keyframes sparkle { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
+        @keyframes confetti-fall { 0% { transform: translateY(0) rotate(0deg); } 100% { transform: translateY(100vh) rotate(360deg); } }
+        @keyframes popUp { from { transform: scale(0.95); } to { transform: scale(1); } }
+
         .container {
             max-width: 600px;
             margin: 0 auto;
-            background-color: #ffffff;
+            background-color: var(--container-bg);
             padding: 40px;
             border-radius: 20px;
             box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-            border: 3px solid #e6ccff;
+            border: 3px solid var(--accent-border);
             animation: popUp 0.5s ease-out;
             position: relative;
             z-index: 1;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
         }
-        @keyframes popUp {
-            from { transform: scale(0.95); }
-            to { transform: scale(1); }
-        }
-        h1 {
-            color: #ff69b4;
-            font-size: 2.5em;
-            margin-bottom: 20px;
-            letter-spacing: 1px;
-        }
-        img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 15px;
-            border: 4px solid #e6ccff;
-        }
-        p {
-            text-align: left;
-            line-height: 1.8;
-            font-size: 1.1em;
-            margin-top: 20px;
-        }
-        audio {
-            margin-top: 20px;
-            width: 100%;
-            border-radius: 10px;
-            display: none;
-        }
-        .heart {
-            font-size: 2em;
-            color: #ff1493;
-            animation: heartbeat 2s infinite;
-        }
-        footer {
-            margin-top: 30px;
-            font-size: 0.9em;
-            color: #ff69b4;
-        }
-        .floating-heart {
-            position: absolute;
-            width: 50px;
-            height: 50px;
-            background-color: #ffb6c1;
-            border-radius: 50%;
-            animation: float 4s ease-in-out infinite;
-            opacity: 0.7;
-            z-index: 0;
-        }
-        .heart-left {
-            top: 20%;
-            left: 5%;
-            animation-delay: 0s;
-        }
-        .heart-right {
-            top: 60%;
-            right: 5%;
-            animation-delay: 2s;
-        }
-        .heart-top {
-            top: 5%;
-            left: 50%;
-            transform: translateX(-50%);
-            animation-delay: 1s;
-        }
-        .heart-bottom {
-            bottom: 5%;
-            left: 20%;
-            animation-delay: 3s;
-        }
-        .sparkle {
-            position: absolute;
-            width: 15px;
-            height: 15px;
-            background-color: #e6ccff;
-            border-radius: 50%;
-            animation: sparkle 2s infinite;
-            opacity: 0.6;
-        }
-        .sparkle1 {
-            top: 10%;
-            left: 15%;
-            animation-delay: 0s;
-        }
-        .sparkle2 {
-            top: 30%;
-            right: 20%;
-            animation-delay: 1s;
-        }
-        .sparkle3 {
-            bottom: 15%;
-            left: 25%;
-            animation-delay: 1.5s;
-        }
-        .sparkle4 {
-            bottom: 20%;
-            right: 10%;
-            animation-delay: 0.5s;
-        }
-        .play-button {
-            background-color: #ff69b4;
-            color: white;
-            border: none;
-            padding: 14px 28px;
-            border-radius: 30px;
-            font-size: 1.1em;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-            transition: background-color 0.3s ease, transform 0.2s ease;
-        }
-        .play-button:hover {
-            background-color: #ff85c1;
-            transform: scale(1.05);
-        }
-        .quote {
-            font-style: italic;
-            color: #a64ca6;
-            margin-top: 20px;
-            animation: fadeIn 7s ease-in-out infinite alternate;
-        }
-        .confetti {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 9999;
-        }
-        .confetti-piece {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background-color: #ff69b4;
-            opacity: 0.8;
-            animation: confetti-fall 3s linear infinite;
-        }
+
+        h1 { font-size: 2.5em; margin-bottom: 20px; letter-spacing: 1px; }
+        img { max-width: 100%; height: auto; border-radius: 15px; border: 4px solid var(--accent-border); }
+        p { text-align: left; line-height: 1.8; font-size: 1.1em; margin-top: 20px; }
+        audio { margin-top: 20px; width: 100%; border-radius: 10px; display: none; }
+        .heart { font-size: 2em; color: var(--main-text-h1); animation: heartbeat 2s infinite; }
+        footer { margin-top: 30px; font-size: 0.9em; color: var(--main-text-h1); }
+        .floating-heart { position: absolute; border-radius: 50%; animation: float 4s ease-in-out infinite; z-index: 0; }
+
+        .sparkle { position: absolute; width: 15px; height: 15px; background-color: var(--accent-border); border-radius: 50%; animation: sparkle 2s infinite; opacity: 0.6; }
+
+        .play-button { background-color: var(--button-bg); color: white; border: none; padding: 14px 28px; border-radius: 30px; font-size: 1.1em; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.3); transition: background-color 0.3s ease, transform 0.2s ease; }
+        .play-button:hover { background-color: var(--button-hover); transform: scale(1.05); }
+        .quote { font-style: italic; color: #a64ca6; margin-top: 20px; animation: fadeIn 7s ease-in-out infinite alternate; }
+        .confetti { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9999; }
+        .confetti-piece { position: absolute; width: 10px; height: 10px; background-color: var(--main-text-h1); opacity: 0.8; animation: confetti-fall 3s linear infinite; }
+
+        .theme-toggle { position: fixed; top: 20px; right: 20px; background-color: var(--button-bg); color: white; border: none; padding: 10px 20px; border-radius: 20px; cursor: pointer; transition: background-color 0.3s ease; }
+        .theme-toggle:hover { background-color: var(--button-hover); }
     </style>
 </head>
-<body>
-    <div class="floating-heart heart-left"></div>
-    <div class="floating-heart heart-right"></div>
-    <div class="floating-heart heart-top"></div>
-    <div class="floating-heart heart-bottom"></div>
-    <div class="sparkle sparkle1"></div>
-    <div class="sparkle sparkle2"></div>
-    <div class="sparkle sparkle3"></div>
-    <div class="sparkle sparkle4"></div>
+<body data-theme="light">
+    <button class="theme-toggle" onclick="toggleTheme()">Toggle Dark/Light Mode</button>
+
     <div class="container">
         <h1>My Love, I'm Sorry <span class="heart">&hearts;</span></h1>
         <img src="photo.png" alt="A picture for you" />
-
         <button class="play-button" onclick="playAudio()">Play the song, my love 💕</button>
         <audio id="apologyAudio" controls>
             <source src="audio.mp3" type="audio/mpeg">
             Your browser does not support the audio element.
         </audio>
-
-    <h1>My Apology to Arpita</h1>
+     
+            <h1>My Apology to Arpita</h1>
 
     <h2>Realization and Regret</h2>
     <p>Arpita, my love, I know I have hurt you deeply, and I have spent a lot of time reflecting upon my actions. I am filled with regret and shame because of my behaviour. I know I have said and done a lot of hurtful things. Things that make me disgusted of myself when I look back at it. I have been an absolute fucking idiot. I've hurt you countless times over the last month. I've hurt you and broken your heart. And you've tried to warn me about my mistakes and I've taken them for granted. I have made empty promises saying I will not hurt you or make you cry again. I have broken those promises.</p>
@@ -245,14 +121,31 @@
     <p>I will make everything right. I will give my best efforts to fix everything and treat you right. All I ask of you is to please consider giving the boy you love one last chance. The last one in a long line of chances I have wasted and taken lightly. I request you to stay one last time. Please take this leap of faith. I know you will not be able to see me the way you used to, but I want to show you I can change. I can be the person you trusted and loved. I love you so much Arpita, and I want to show it to you through my actions and efforts. Apologies will not be enough to make up for the pain you have gone through because of me, but I will show you that I can improve through my acts. I know it's difficult for you to trust me right now, but I want to show you through consistent efforts that I can be better. Words alone cannot mend what has been broken, but I will mend it in gold, through the deeds. I will give you the life you chose when you got together with me, a life that you rightfully deserve. I will work on rebuilding what we had, and creating a relationship based on love, trust and respect.</p>
 
     <p class="closing">With hope and so much love,<br>
-    Your Deadlock from Haven</p>
+    Your deadlock from Haven</p>
+  
         <div class="quote">"Time will tell how much I love you."</div>
-        <footer>
-            Made with love and sincerity 💕
-        </footer>
+        <footer>Made with love and sincerity 💕</footer>
     </div>
+
     <div class="confetti" id="confetti"></div>
+
     <script>
+        // Add a LOT more floating circles
+        const totalFloating = 250;
+        for (let i = 0; i < totalFloating; i++) {
+            const div = document.createElement('div');
+            div.classList.add('floating-heart');
+            const size = Math.random() * 40 + 10;
+            div.style.width = size + 'px';
+            div.style.height = size + 'px';
+            div.style.top = Math.random() * 100 + '%';
+            div.style.left = Math.random() * 100 + '%';
+            div.style.backgroundColor = `hsl(${Math.random() * 360}, 70%, 75%)`;
+            div.style.animationDuration = (Math.random() * 5 + 3) + 's';
+            div.style.opacity = Math.random() * 0.5 + 0.3;
+            document.body.appendChild(div);
+        }
+
         function playAudio() {
             const audio = document.getElementById('apologyAudio');
             audio.style.display = 'block';
@@ -272,10 +165,17 @@
             }
         }
 
+        function toggleTheme() {
+            const body = document.body;
+            const currentTheme = body.getAttribute('data-theme');
+            body.setAttribute('data-theme', currentTheme === 'light' ? 'dark' : 'light');
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             console.log("Welcome to a heartfelt apology website!");
         });
     </script>
 </body>
 </html>
+
 
